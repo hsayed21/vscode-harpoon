@@ -28,6 +28,19 @@ export default function createEditorQuickPickCommand(
                 return;
             }
             workspaceService.changeEditorByName(pickedEditor.description!);
+            quickPick.hide();
+        });
+
+        quickPick.onDidChangeValue((value) => {
+            // Check if the user typed a number to select by index
+            const num = parseInt(value.trim());
+            if (!isNaN(num) && num >= 1 && num <= quickPick.items.length) {
+                const selectedItem = quickPick.items[num - 1];
+                if (selectedItem && selectedItem.description) {
+                    workspaceService.changeEditorByName(selectedItem.description);
+                    quickPick.hide();
+                }
+            }
         });
 
         quickPick.onDidTriggerItemButton(e => {
