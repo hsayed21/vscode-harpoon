@@ -48,7 +48,9 @@ type CommandName =
     | "gotoGlobalEditor8"
     | "gotoGlobalEditor9"
     | "editorGlobalQuickPick"
-    | "gotoPreviousGlobalHarpoonEditor";
+    | "gotoPreviousGlobalHarpoonEditor"
+    | "removeAllEditors"
+    | "removeAllGlobalEditors";
 
 export default class CommandFactory {
     constructor(private readonly context: vscode.ExtensionContext) {}

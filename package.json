@@ -217,6 +217,14 @@
             {
                 "command": "vscode-harpoon.gotoPreviousGlobalHarpoonEditor",
                 "title": "VSCode Harpoon: Go to previous global harpoon editor"
+            },
+            {
+                "command": "vscode-harpoon.removeAllEditors",
+                "title": "VSCode Harpoon: Remove All Editors"
+            },
+            {
+                "command": "vscode-harpoon.removeAllGlobalEditors",
+                "title": "VSCode Harpoon: Remove All Global Editors"
             }
         ]
     },

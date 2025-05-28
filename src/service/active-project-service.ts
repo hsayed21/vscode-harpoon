@@ -104,4 +104,9 @@ export default class ActiveProjectService {
     public hasEditor(editor: Editor) {
         return this._activeEditors.some(e => e.fileName === editor.fileName);
     }
+
+    public removeAllEditors() {
+        this._activeEditors = [];
+        this._previousEditor = undefined;
+    }
 }
