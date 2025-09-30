@@ -23,6 +23,9 @@
     "categories": [
         "Other"
     ],
+    "activationEvents": [
+		"*"
+	],
     "main": "./dist/harpoon.js",
     "contributes": {
         "commands": [

@@ -1,0 +1,41 @@
+name: Build & Release VSCode Extension
+
+on:
+  push:
+    branches:
+      - dev  # Set a branch to deploy
+  workflow_dispatch: # run manually
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+
+      - name: Clean Install Dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+      - name: Package Extension
+        run: npx vsce package --no-yarn
+        # produces *.vsix
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.vsix"
+          # tag_name: v${{ github.run_number }}
+          tag_name: v1
+          name: "Release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
